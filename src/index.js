@@ -1,6 +1,6 @@
 module.exports = {
   ...require('./parser'),
   ...require('./html'),
-  ...require('./error')
+  ...require('./errors'),
   Default: require('./default')
 }
