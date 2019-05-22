@@ -143,7 +143,6 @@ describe('default', () => {
     })
 
     test('procedure_lists', () => {
-      console.log(result.procedure_lists[0].lines)
       expect(result.procedure_lists).toEqual([
         {
           lines: [
