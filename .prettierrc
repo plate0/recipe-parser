@@ -1,0 +1,4 @@
+# vim: ft=yaml
+
+semi: false
+singleQuote: true
