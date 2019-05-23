@@ -49,7 +49,7 @@ are automatically passed to functions to do additional parsing
 (`ingredient_lists` and `procedure_lists`) 
 
 ```
-www.myrecipesite.json
+www.myrecipesite.com.json
 ---
 
 {
@@ -94,7 +94,7 @@ user. It is up to the author to ensure it works correctly and returns a valid
 recipe. For an example, look at the Reddit parser, which takes all Reddit
 domains and looks up sub-parsers based off of the subreddit to use.
 
-```
+```javascript
 module.exports = dom( ($, ...rest) => {
   // Custom Parser
 })
