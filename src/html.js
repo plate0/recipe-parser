@@ -3,6 +3,7 @@ const moment = require('moment')
 const _ = require('lodash')
 const cheerio = require('cheerio')
 const TurndownService = require('turndown')
+const { duration } = require('./duration')
 
 const findMap = ($, options) => {
   const opts = _.defaults(options, {
@@ -273,7 +274,21 @@ const defaults = {
   title,
   description: description(),
   image_url: image_url(),
-  preheats: preheats()
+  preheats: preheats(),
+  ingredient_lists: $ => {
+    let lines = recipeSchemaIngredientLists($)
+    if (lines.length !== 0) {
+      return [{ lines }]
+    }
+    return undefined
+  },
+  procedure_lists: $ => {
+    let lines = recipeSchemaProcedureLists($)
+    if (lines.length > 0) {
+      return [{ lines }]
+    }
+    return undefined
+  }
 }
 
 module.exports = {
@@ -281,6 +296,7 @@ module.exports = {
   title,
   description,
   defaults,
+  duration,
   image_url,
   ingredient_lists,
   procedure_lists,
