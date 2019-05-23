@@ -6,13 +6,10 @@ const { Default, RecipeError, parser } = require('./src')
 
 const parse = async urlString => {
   const { hostname } = url.parse(urlString)
-  const recipeParser = Parsers[hostname] || Default
-  const { data } = await axios(
-    await (recipeParser.transform
-      ? recipeParser.transform(urlString)
-      : urlString)
-  )
-  const recipe = parser(recipeParser)(data)
+  let p = Parsers[hostname] || Default
+  const fetch = p.fetch || axios.get
+  const { data } = await fetch(urlString, {})
+  const recipe = parser(p)(data, { urlString })
   if (
     !recipe.title ||
     !size(recipe.ingredient_lists) ||

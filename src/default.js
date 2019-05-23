@@ -40,14 +40,19 @@ const procedure_lists = $ => {
   return undefined
 }
 
-module.exports = dom(
-  mapValues({
-    ...html.defaults,
-    ...{
-      yield: yld,
-      preheats,
-      ingredient_lists,
-      procedure_lists
-    }
-  })
-)
+const DefaultParser = mapValues({
+  ...html.defaults,
+  ...{
+    yield: yld,
+    preheats,
+    ingredient_lists,
+    procedure_lists
+  }
+})
+
+// Wrapper, future support for DOM parsers...
+module.exports = dom(($, ...rest) => {
+  // CHeck dom for known strings
+  // and use dom specific parsers for those
+  return DefaultParser($, ...rest)
+})

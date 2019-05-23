@@ -5,7 +5,7 @@ const html = require('./html')
 /*
  *
  */
-const dom = func => (html, opts) => func(cheerio.load(html), opts)
+const dom = func => (html, ...rest) => func(cheerio.load(html), ...rest)
 
 /*
  *
