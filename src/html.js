@@ -257,7 +257,8 @@ const procedure_lists = sel => $ => {
 }
 
 const recipeSchemaYield = $ => {
-  const y = $('[itemprop="recipeYield"]').text()
+  const node = $('[itemprop="recipeYield"]')
+  const y = node.text() || node.attr('content')
   if (_.isNil(y)) {
     return undefined
   }
@@ -288,7 +289,8 @@ const defaults = {
       return [{ lines }]
     }
     return undefined
-  }
+  },
+  yield: recipeSchemaYield
 }
 
 module.exports = {

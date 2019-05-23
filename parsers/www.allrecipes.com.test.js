@@ -21,6 +21,10 @@ describe('www.allrecipes.com', () => {
     expect(result.duration).toEqual(4800)
   })
 
+  test('yield', () => {
+    expect(result.yield).toEqual('8')
+  })
+
   test('ingredient_lists', () => {
     expect(result.ingredient_lists).toHaveLength(1)
     expect(result.ingredient_lists[0].lines).toHaveLength(6)
