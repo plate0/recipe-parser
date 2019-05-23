@@ -6,6 +6,7 @@
   "author": "PlateZero <hello@platezero.com>",
   "license": "UNLICENSED",
   "scripts": {
+    "add-site": ".bin/add-site",
     "test": "jest"
   },
   "dependencies": {
