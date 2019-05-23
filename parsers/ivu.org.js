@@ -72,7 +72,7 @@ exports.ingredient_lists = $ => [
 exports.procedure_lists = $ => {
   const turndown = new TurndownService()
   let ulIndex
-  const td = $('table table td')
+  const td = $('table table td').clone()
   // Remove child elements up to and including 'ul'
   td.children().each(function(index, element) {
     if (element.type == 'tag') {
