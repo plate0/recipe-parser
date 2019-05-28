@@ -1,7 +1,7 @@
 const url = require('url')
 const axios = require('axios')
 const { size } = require('lodash')
-const { Default } = require('./default')
+const Default = require('./default')
 const { RecipeError } = require('./errors')
 const { parser } = require('./parser')
 
