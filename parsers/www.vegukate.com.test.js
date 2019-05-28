@@ -31,10 +31,22 @@ describe('vegukate.com', () => {
     expect(result.procedure_lists).toEqual([
       {
         lines: [
-          'Preheat oven to 350° F and line a baking dish with parchment paper.',
-          'In a large bowl combine all dry ingredients: oat flour, baking soda, sea salt, pumpkin pie spice, cacao powder, coconut flour, and coconut sugar. Stir well to combine. Add in all wet ingredients: coconut oil, pumpkin puree, maple syrup, almond milk, and vanilla extract. Stir well to incorporate all ingredients together. Brownie batter will be thick, cakey, and a bit spongy – this is good!',
-          'Evenly spread brownie batter into lined baking tray. Bake for 35-45 minutes, or until a toothpick or knife inserted into the center of the brownies comes out clean. Remove brownies from oven and let sit for 45-60 minutes to cool completely before cutting. Or dig in after 30 minutes and enjoy warm, gooey brownies.',
-          'Store cut brownies in an airtight container in the refrigerator for 4-5 days. These brownies are absolutely dreamy with coconut cream, cashew cream, coconut ice cream, or even pumpkin ice cream. Yum!'
+          {
+            text:
+              'Preheat oven to 350° F and line a baking dish with parchment paper.'
+          },
+          {
+            text:
+              'In a large bowl combine all dry ingredients: oat flour, baking soda, sea salt, pumpkin pie spice, cacao powder, coconut flour, and coconut sugar. Stir well to combine. Add in all wet ingredients: coconut oil, pumpkin puree, maple syrup, almond milk, and vanilla extract. Stir well to incorporate all ingredients together. Brownie batter will be thick, cakey, and a bit spongy – this is good!'
+          },
+          {
+            text:
+              'Evenly spread brownie batter into lined baking tray. Bake for 35-45 minutes, or until a toothpick or knife inserted into the center of the brownies comes out clean. Remove brownies from oven and let sit for 45-60 minutes to cool completely before cutting. Or dig in after 30 minutes and enjoy warm, gooey brownies.'
+          },
+          {
+            text:
+              'Store cut brownies in an airtight container in the refrigerator for 4-5 days. These brownies are absolutely dreamy with coconut cream, cashew cream, coconut ice cream, or even pumpkin ice cream. Yum!'
+          }
         ]
       }
     ])

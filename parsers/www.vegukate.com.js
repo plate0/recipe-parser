@@ -25,7 +25,7 @@ exports.procedure_lists = $ => [
     lines: $('[itemprop="recipeInstructions"] h3')
       .filter(where($, /Method:/))
       .nextUntil('h3')
-      .map((_, e) => trim($(e).text()))
+      .map((_, e) => ({ text: trim($(e).text()) }))
       .get()
   }
 ]
