@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.19.0",
     "cheerio": "1.0.0-rc.3",
     "html-entities": "1.2.1",
     "ingredient-parser": "https://github.com/plate0/ingredient-parser.git#v0.2.0",
