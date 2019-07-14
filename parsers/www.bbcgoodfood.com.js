@@ -1,12 +1,14 @@
+const { parseIngredient } = require('ingredient-parser')
 const html = require('../src/html')
 const { _parseDuration: parseDuration } = require('../src/duration')
 
 exports.ingredient_lists = $ => {
-    $('.ingredients-list__glossary-link').remove()
-    let lines = html.recipeSchemaIngredientLists($)
+    let lines = []
+    $('.ingredients-list__item').each((i, e) => lines.push($(e).attr('content')))
     if (lines.length !== 0) {
-      return [{ lines }]
+      return [{ lines: lines.map(line => parseIngredient(line) ) }]
     }
+     console.log(`\x1b[93;41mNo elements found\x1b[0m`)
     return undefined
 }
 

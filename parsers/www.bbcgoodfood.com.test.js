@@ -18,20 +18,21 @@ describe('www.bbcgoodfood.com', () => {
   })
 
   test('title', () => {
-    expect(result.title).toEqual('Vegetarian chilli')
+    expect(result.title).toBe('Vegetarian chilli')
   })
 
   test('duration', () => {
-    expect(result.duration).toEqual(1920)
+    expect(result.duration).toBe(1920)
   })
 
   test('yield', () => {
-    expect(result.yield).toEqual(' Serves 2 ')
+    expect(result.yield).toBe(' Serves 2 ')
   })
 
   test('ingredient_lists', () => {
     expect(result.ingredient_lists).toHaveLength(1)
     expect(result.ingredient_lists[0].lines).toHaveLength(4)
+    expect(result.ingredient_lists[0].lines[1].name).toBe('can kidney beans in chilli sauce')
   })
 
   test('procedure_lists', () => {
