@@ -12,7 +12,7 @@ const parse = async urlString => {
   let p = Parsers[hostname] || Default
   const fetch = p.fetch || axios.get
   const { data } = await fetch(urlString, {})
-  const recipe = parser(_.isFunction(p)? p: _.pick(p, _.keys(template)))(data, { urlString })
+  const recipe = parser(isFunction(p)? p: pick(p, keys(template)))(data, { urlString })
   if (
     !recipe.title ||
     !size(recipe.ingredient_lists) ||
