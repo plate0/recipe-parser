@@ -1,9 +1,10 @@
 const url = require('url')
 const axios = require('axios')
-const { size } = require('lodash')
+const { size, keys, pick, isFunction} = require('lodash')
 const Default = require('./default')
 const { RecipeError } = require('./errors')
 const { parser } = require('./parser')
+const template = require('./html').defaults
 
 const parse = async urlString => {
   const { hostname } = url.parse(urlString)
@@ -11,7 +12,7 @@ const parse = async urlString => {
   let p = Parsers[hostname] || Default
   const fetch = p.fetch || axios.get
   const { data } = await fetch(urlString, {})
-  const recipe = parser(p)(data, { urlString })
+  const recipe = parser(isFunction(p)? p: pick(p, keys(template)))(data, { urlString })
   if (
     !recipe.title ||
     !size(recipe.ingredient_lists) ||
