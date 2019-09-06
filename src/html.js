@@ -73,7 +73,9 @@ const description = sel => {
 
 const image_url = sel => $ => {
   if (sel) {
-    return $(sel).attr('src')
+debugger
+    let x = $(sel).attr('src')
+    return x
   }
   let image =
     $('meta[property="twitter:image"]').attr('content') ||
@@ -174,7 +176,10 @@ const plateZeroIngredientLists = $ => {
   return lines
 }
 
-const ingredient_lists = sel => $ => [
+const ingredient_lists = sel => $ => 
+{
+     console.log(`sel=${sel}`)
+ [
   {
     lines: $(sel)
       .map(function() {
@@ -183,6 +188,7 @@ const ingredient_lists = sel => $ => [
       .get()
   }
 ]
+}
 
 function procedureMapper($) {
   return function() {
@@ -271,6 +277,7 @@ const recipeSchemaYield = $ => {
   return undefined
 }
 
+// Default values, must include all valid keys
 const defaults = {
   title,
   description: description(),
@@ -290,7 +297,13 @@ const defaults = {
     }
     return undefined
   },
-  yield: recipeSchemaYield
+  yield: recipeSchemaYield,
+  subtitle: undefined,
+  source_url: undefined,
+  source_author: undefined,
+  source_title: undefined,
+  source_isbn: undefined,
+  duration: undefined
 }
 
 module.exports = {
