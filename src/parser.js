@@ -41,11 +41,9 @@ const mapValues = object => (...args) =>
  * 
  * @return a function to parse html to a recipe
  */
-const parser = partial => {
-  return typeof partial === 'function'
+const parser = partial => typeof partial === 'function'
     ? partial
     : dom(mapValues(_.mapValues({ ...html.defaults, ...partial }, handler)))
-}
 
 module.exports = {
   dom,
