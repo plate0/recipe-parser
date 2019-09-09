@@ -87,3 +87,6 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 .project
+.externalToolBuilders/
+.settings/
+.tern-project
