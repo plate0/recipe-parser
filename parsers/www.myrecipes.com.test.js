@@ -17,7 +17,7 @@ describe( 'myrecipes.com', () => {
   // WARNING: This test requires an internet connection and depends on the behaviour of a target web site.
   //
   ////////////////////////////////////////////////////////////////////////////////////////////////////////
-  test('fetch', async() => {
+  test.skip('fetch recipe from https://www.myrecipes.com', async() => {
     const urlString = 'https://www.myrecipes.com/recipe/roasted-red-pepper-hummus-veggie-wraps'
     const response = await target.fetch( urlString, {} )
     expect(response.status).toBe(200)
