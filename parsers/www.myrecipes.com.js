@@ -4,7 +4,6 @@ const axios = require( 'axios' )
 const adapter = require( 'axios/lib/adapters/http' )
 
 exports.fetch = async ( url, options ) => {
-  console.error( `url ${typeof url}, options ${JSON.stringify( options )}` )
   let config = {
     headers: {
       Cookie: "euConsent=true; euConsentId=79af88de-7209-4335-8d2f-c3d328e5d812"
