@@ -73,9 +73,7 @@ const description = sel => {
 
 const image_url = sel => $ => {
   if (sel) {
-debugger
-    let x = $(sel).attr('src')
-    return x
+    return $(sel).attr('src')
   }
   let image =
     $('meta[property="twitter:image"]').attr('content') ||
@@ -176,10 +174,7 @@ const plateZeroIngredientLists = $ => {
   return lines
 }
 
-const ingredient_lists = sel => $ => 
-{
-     console.log(`sel=${sel}`)
- [
+const ingredient_lists = sel => $ => [
   {
     lines: $(sel)
       .map(function() {
@@ -188,7 +183,6 @@ const ingredient_lists = sel => $ =>
       .get()
   }
 ]
-}
 
 function procedureMapper($) {
   return function() {
