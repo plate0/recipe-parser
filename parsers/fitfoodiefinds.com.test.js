@@ -13,7 +13,7 @@ describe('fitfoodiefinds', () => {
     debug(util.inspect(result))
   })
 
-  test.skip('title', async () => {
+  test('title', async () => {
     expect(result.title).toBe('Southwestern Black Bean Couscous Salad')
   })
 

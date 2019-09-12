@@ -2,7 +2,7 @@ const $ = require('cheerio')
 
 exports.source_author = ".tasty-recipes-author-name"
 exports.duration = ".tasty-recipes-total-time"
-// exports.title = ".tastywrap h2"
+exports.title = ".tastywrap h2"
 exports.yield = $ => $(".tasty-recipes-yield span").first().text()
 exports.image_url =  $ => $(".tasty-recipes-image img").prop('src')
   
