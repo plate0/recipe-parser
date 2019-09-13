@@ -1,3 +1,5 @@
+const { parseIngredient } = require('ingredient-parser')
+const _ = require('lodash')
 const $ = require('cheerio')
 
 exports.source_author = ".tasty-recipes-author-name"
@@ -14,13 +16,15 @@ exports.ingredient_lists = $ => {
     $(headings).each((ix, el) => {
       lists[ix] = {
           name: $(el).text(),
-          lines: $(el).next('ul').children('li').map(li => $(li).text())
+          lines: $(el).next('ul').children('li').map((ix, li) => {
+            return parseIngredient(_.trim($(li).text()))
+            }).get()
       }
     })
   } else {
     const el = $('.tasty-recipe-ingredients ul')
     lists[0] = {
-        lines: $(el).children('li').map(li => $(li).text())
+        lines: $(el).children('li').map((ix, li) => $(li).text()).get()
     } 
   }
   return lists
@@ -30,7 +34,7 @@ exports.procedure_lists = $ => {
   const lists = []
   const ol = $('.tasty-recipe-instructions ol')
     lists[0] = {
-        lines: $(ol).children('li').map(li => $(li).text())
+        lines: $(ol).children('li').map((ix,li) => { return { text: $(li).text()}}).get()
     } 
   return lists
 }
