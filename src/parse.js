@@ -19,6 +19,7 @@ const parse = async urlString => {
   ) {
     throw new RecipeError('invalid recipe', recipe)
   }
+  recipe.yield = recipe.yield? recipe.yield.trim().replace(/^(\d+)$/, 'Serves  $1'): recipe.yield
   return recipe
 }
 
