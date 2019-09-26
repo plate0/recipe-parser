@@ -9,7 +9,11 @@
     "add-site": ".bin/add-site",
     "test": "jest"
   },
+  "babel": {
+    "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  },
   "dependencies": {
+    "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "axios": "0.19.0",
     "cheerio": "1.0.0-rc.3",
     "html-entities": "1.2.1",

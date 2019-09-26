@@ -25,19 +25,35 @@ function recipe($) {
 }
 
 exports.duration = $ => {
-  if (recipe($).totalTime) {
-    return moment.duration(recipe($).totalTime).asSeconds()
-  }
-  let p = recipe($).prepTime? moment.duration(recipe($).prepTime).asSeconds(): 0
-  let c = recipe($).cookTime? moment.duration(recipe($).cookTime).asSeconds(): 0
-  return p+c
+  let x 
+  const r = recipe($)
+  if (r) {
+    if (r.totalTime) {
+      return moment.duration(r.totalTime).asSeconds()
+    }
+    let p = r.prepTime
+    let c = r.cookTime
+    if (p) {
+      x = moment.duration(p).asSeconds()
+    }
+    if (c) {
+      x = x === undefined? c:  x+moment.duration(c).asSeconds()
+    }
+   }
+ return x
 }
 
-exports.ingredient_lists = $ => [ { lines: _.map(recipe($).recipeIngredient, string => parseIngredient(string))} ]
-exports.procedure_lists  = $ => [ { lines:  _.map(recipe($).recipeInstructions, step => { return {text: step.text}}) } ]
+exports.ingredient_lists = $ => { 
+      const r = recipe($);
+      return r? [ { lines: _.map(r.recipeIngredient, string => parseIngredient(string))} ]: undefined
+    }
+exports.procedure_lists  = $ => { 
+      const r = recipe($);
+      return r? [ { lines:  _.map(r.recipeInstructions, step => { return {text: step.text}}) } ]: undefined
+    }
 
-exports.yield = $ => recipe($).recipeYield
-exports.title = $ => recipe($).name
-exports.description = $ => recipe($).description
-exports.source_author = $ => recipe($).author.name
-exports.image_url = $ => _.last(recipe($).image)
+exports.yield = $ => recipe($)?.recipeYield
+exports.title = $ => recipe($)?.name
+exports.description = $ => recipe($)?.description
+exports.source_author = $ => recipe($)?.author.name
+exports.image_url = $ => recipe($).image? _.last(recipe($).image): undefined
