@@ -32,19 +32,24 @@ const where = ($, r) => (_i, e) =>
 
 const text = sel => $ => _.trim($(sel).text())
 
-const title = $ => {
-  let title = _.trim(
-    $('meta[name="twitter:title"]').attr('content') ||
-      $('meta[property="twitter:title"]').attr('content')
-  )
-  if (title) {
-    return title
+const title = sel => {
+  if ( sel ) {
+    return text( sel )
   }
-  title = _.trim($('meta[property="og:title"]').attr('content'))
-  if (title) {
-    return title
+  return $ => {
+    let title = _.trim(
+      $( 'meta[name="twitter:title"]' ).attr( 'content' ) ||
+      $( 'meta[property="twitter:title"]' ).attr( 'content' )
+    )
+    if ( title ) {
+      return title
+    }
+    title = _.trim( $( 'meta[property="og:title"]' ).attr( 'content' ) )
+    if ( title ) {
+      return title
+    }
+    return text( 'title' )( $ )
   }
-  return text('title')($)
 }
 
 const description = sel => {
