@@ -277,8 +277,8 @@ const recipeSchemaYield = $ => {
   return undefined
 }
 
-// Default values, must include all valid keys
-const defaults = {
+// Master List Of Keys And Default Values, must include all valid keys
+const masterListOfKeysAndDefaults = {
   title,
   description: description(),
   image_url: image_url(),
@@ -306,6 +306,12 @@ const defaults = {
   duration: undefined
 }
 
+// Default values
+const defaults = _.pickBy(masterListOfKeysAndDefaults, val => val != undefined)
+
+// All valid keys
+const validKeys = _.keys(masterListOfKeysAndDefaults)
+
 module.exports = {
   text,
   title,
@@ -321,5 +327,6 @@ module.exports = {
   recipeSchemaProcedureLists,
   plateZeroProcedureLists,
   plateZeroIngredientLists,
+  validKeys,
   where
 }
