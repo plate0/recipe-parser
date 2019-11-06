@@ -86,4 +86,9 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+# Eclipe IDE files
+.externalToolBuilders/
 .project
+.settings/
+.tern-project
